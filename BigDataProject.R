@@ -14,11 +14,14 @@
 #--------------------------------- 1. Installation -----------------------------
 
 #******************** Working Path and Directory Creation **********************
-phillycrime <- read.csv("~/Downloads/incidents_part1_part2.csv")
+phillycrime <- read.csv(paste(PhillyCrimeRates, "Philly Crime Rates.csv", sep=""))
 library(readxl)
 Eagles_Playoffs <- read_excel("Eagles Playoffs.xlsx")
 dir.create("Philly Crime and the Eagles")
-EaglesAndPhilly <- paste(getwd(),"/","Philly Crime and the Eagles","/",sep ="")
+
+PhillyCrimeRates <- paste(getwd(),"/","Philly Crime Rates","/",sep ="")
+Eagles <- paste(getwd(),"/","Eagles","/",sep ="")
+Analysis <- paste(getwd(),"/","Analysis","/",sep ="")
 
 head(phillycrime$dispatch_date)
 tail(phillycrime$dispatch_date)
