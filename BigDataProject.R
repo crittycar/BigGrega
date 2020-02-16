@@ -14,22 +14,30 @@
 #--------------------------------- 1. Installation -----------------------------
 
 #******************** Working Path and Directory Creation **********************
-phillycrime <- read.csv(paste(PhillyCrimeRates, "Philly Crime Rates.csv", sep=""))
-library(readxl)
-Eagles_Playoffs <- read_excel("Eagles Playoffs.xlsx")
-dir.create("Philly Crime and the Eagles")
 
+#Working directory subfolders pathways
 PhillyCrimeRates <- paste(getwd(),"/","Philly Crime Rates","/",sep ="")
 Eagles <- paste(getwd(),"/","Eagles","/",sep ="")
 Analysis <- paste(getwd(),"/","Analysis","/",sep ="")
 
+#This reads the philly crime rates csv file
+phillycrime <- read.csv(paste(PhillyCrimeRates, 
+                              "Philly Crime Rates.csv", 
+                              sep = ""))
+
+#This reads the eagles playoff games csv file
+Eagles_Playoffs <- read.csv(paste(Eagles,
+                                  "EaglesPlayoffs.csv",
+                                  sep = ""))
+
+
 head(phillycrime$dispatch_date)
 tail(phillycrime$dispatch_date)
 levels(phillycrime$dispatch_date)
-jkdflm;fdn;kfeqwknefw
-sortbydate <- sort(phillycrime$dispatch_date)
 
-popopsod
+
+
+
 
 
 
