@@ -140,3 +140,64 @@ qa#
 test <- crime$text_general_code[grep("2006", crime$dispatch_date)]
 head(test)
 unclass(head(crime$dispatch_date))
+#
+#
+#
+#
+#
+#
+# THIS ONLY DOES INDIVIDUAL
+date.sub <- function(year.test,month.test,day.test){
+  sub.year <- crime[crime$dispatch_year == year.test,]
+  sub.month <- sub.year[sub.year$dispatch_month == month.test,]
+  sub.day <- sub.month[sub.month$dispatch_day == day.test,]
+print(sub.day)
+}
+subset.testing <- date.sub(2016,1,2)
+
+
+
+# READ ME
+# WORK IN PROGRESS
+# However this function does work. We can input any of 3 variables
+# These variables are date.sub.exper(year.test,month.test,day.test)
+# If we want to look at the month of march 2015, we use
+# date.sub.exper(2015, 3, day.test=FALSE)
+# Subsequently if we want all of 2015
+# date.sub.exper(2015, month.test=FALSE, day.test=FALSE)
+
+date.sub.exper <- function(year.test,month.test,day.test){
+  sub.year <- crime[crime$dispatch_year == year.test,]
+  if(month.test == FALSE){
+    subset.result <- sub.year
+  }
+  if(month.test == TRUE){
+ sub.month <- sub.year[sub.year$dispatch_month == month.test,]
+ if(day.test == FALSE){
+   subset.result <- sub.month
+ }
+ if(day.test == TRUE){
+ sub.day <- sub.month[sub.month$dispatch_day == day.test,]
+subset.result <- sub.day   
+ }
+  }
+  print(subset.result)
+}
+sub.testing.noday <- date.sub.exper(2015,3, day.test = FALSE)
+sub.test.nomonth <- date.sub.exper(2015, month.test = FALSE, day.test = FALSE)
+
+
+#
+#
+#
+#
+
+
+sub.year <- crime[crime$dispatch_year == "2015",]
+sub.year <- crime[crime$dispatch_year == "year.test"]
+print(sub.year)
+sub.month <- sub.year[sub.year$dispatch_month == "month.test"] 
+sub.day <- sub.month[sub.month$dispatch_day == "day.test"]
+#
+year.test <- 2014
+sub.year <- crime[crime$dispatch_year == year.test,]
