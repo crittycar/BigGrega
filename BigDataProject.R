@@ -20,6 +20,9 @@ PhillyCrimeRates <- paste(getwd(),"/","Philly Crime Rates","/",sep ="")
 Eagles <- paste(getwd(),"/","Eagles","/",sep ="")
 Analysis <- paste(getwd(),"/","Analysis","/",sep ="")
 
+
+#******************* Installing the CSV files **********************************
+
 #This reads the philly crime rates csv file
 phillycrime <- read.csv(paste(PhillyCrimeRates, 
                               "Philly Crime Rates.csv", 
@@ -31,9 +34,6 @@ Eagles_Playoffs <- read.csv(paste(Eagles,
                                   sep = ""))
 
 
-head(phillycrime$dispatch_date)
-tail(phillycrime$dispatch_date)
-levels(phillycrime$dispatch_date)
 
 
 
