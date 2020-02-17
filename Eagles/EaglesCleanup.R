@@ -45,4 +45,16 @@ Binary <- c(rep(1,length(AllEagles)))
 CompletedEagles <- data.frame(Date,Binary)
 
 
+# Writing subset function
+PlayoffFunction <- function(id){
+  df[df[["Week"]] == id,]
+}
+f1(11)
+getwd()
+
+# Loading data
+setwd(("C:/Users/Jack Dewey/Documents/GitHub/BigGrega/Eagles"))
+temp <- list.files(pattern="*.csv")
+for (i in 1:length(temp)) assign(temp[i], read.csv(temp[i]))
+
 
