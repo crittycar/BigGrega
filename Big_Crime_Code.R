@@ -24,17 +24,22 @@ for(i in 1:length(folders)){
 data.output.path <- paste(wd, "/", folders[1], sep = "")
 figures.path <- paste(wd, "/", folders[2], sep = "")
 data.path <- paste(wd, "/", folders[3], sep = "")
-#
-#
+
+
+
 # now we can save stuff to these folders!
-#
-#
-#---------------------lets load in the data-------------------------------------
-#
-#
+
+
+#---------------------Below, we load in the philly crime data-------------------
+
+
 # time to upload the datas
-crime <- read.csv(paste(data.path, "/", "incidents_part1_part2.csv", sep = ""),
+crime <- read.csv(paste(data.path, "/", "Philly_Crime_Data.csv", sep = ""),
                   stringsAsFactors = FALSE)
+
+
+
+
 #
 #
 # we now need to simplify our data, there are a lot of columns we do not need
