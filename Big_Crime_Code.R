@@ -71,7 +71,7 @@ crime$dispatch_day <- as.numeric(format(crime$dispatch_date, format = "%d"))
 
 # we can confirm that we did what we wanted to 
 head(crime)  
-
+?apply
 
 # now our data is in a very useable form
 
@@ -85,43 +85,72 @@ head(crime)
 # returns a list of the crime$text_general_code AKA frequency of different crimes
 crime.frequency <- function(n){
   freq <- crime$text_general_code[crime$dispatch_date == n]
-  return(freq)
+  length(freq)
 }
 
+# we now want to create an additional collumn of data that contains 
+# the frequency of all crimes on the selected day
 
+
+
+
+# below we create a new data.frame
+# it turns out that the dates were listed the number of times that crimes occured
+# on that day, and we just want the unique dates
+crime.cleaned <- data.frame(c(rep(NA, length(unique(crime$dispatch_date)))))
+crime.cleaned$unique.date <- sort(unique(crime$dispatch_date))
+
+
+# we want to make a new column in the cleaned data frame
+# we want for this column to contain the frequency of crime for every date
+row.num <- c(1:length(crime.cleaned$unique.date))  
+date.range <- c(crime.cleaned$unique.date[row.num])
+crime.cleaned$crime_frequency <- rep(NA, length(crime.cleaned$unique.date))
+for(i in 1:length(crime.cleaned$crime_frequency))
+   crime.cleaned$crime_frequency[i] <- crime.frequency(date.range[i])  
+
+plot(crime.cleaned$unique.date[150:300], crime.cleaned$crime_frequency[150:300])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
 
 # now we can easily determine crime frequencies for any date we want
-# 
-# test to see if it works
-foo <- crime.frequency("2018-02-04")
-table(foo)
 
-test.1 <- crime$text_general_code[crime$dispatch_date == "2018-02-04"]
-table(test.1)
+# function takes three arguments in order
+# YYYY, MM, DD ... note that single digit days cannot have a zero in front
+# returns the average daily frequency of crime in that week
+# by taking three days before, the day of, and three days after
+
+week.average <- function(y, m, d){
+  if(d < 3)  
+    # need to make a different case for every month 28, 29, 30, 31 days long
+    # to do, need to know the number of unique days from previous month
+}
+
+# gonna make a sequence of the days
+# paste them onto year month and then use crime.frequency to calculate the freq
+# then sum all the freq, then need to figure out how to average for each type of crime
+
+sort(unique(crime$dispatch_day[crime$dispatch_month == 12]))  # sorted days of the month
+
+paste("1995", "10", "12", sep = "-")
 
 
-test.2 <- crime$text_general_code[crime$dispatch_date == "2017-02-04"]
-
-test.3 <- crime$text_general_code[crime$dispatch_date == "2016-02-04"]
-table(test.2)
-length(test.2)
-length(test.1)
-length(test.3)
-table(test.3)
-chisq.test(test.1)
-test <- crime$text_general_code[crime$dispatch_year == "2018"]
-please <- test[crime$dispatch_month == "1"]
-table(please)
-table(test)
-#
-#
-
-# We found that a few of the crimes did not have a corresponding
-# text_general_code, so we took these entries as labeled them as All Other Offenses
-crime$text_general_code[crime$text_general_code == ""] <- "All Other Offenses"
-crime$text_general_code <- droplevels(crime$text_general_code)
-table(crime$text_general_code)
-# 
+head(crime$dispatch_month)
 #
 #
 # want to first make a function to create an empty vector for every year
@@ -140,64 +169,3 @@ qa#
 test <- crime$text_general_code[grep("2006", crime$dispatch_date)]
 head(test)
 unclass(head(crime$dispatch_date))
-#
-#
-#
-#
-#
-#
-# THIS ONLY DOES INDIVIDUAL
-date.sub <- function(year.test,month.test,day.test){
-  sub.year <- crime[crime$dispatch_year == year.test,]
-  sub.month <- sub.year[sub.year$dispatch_month == month.test,]
-  sub.day <- sub.month[sub.month$dispatch_day == day.test,]
-print(sub.day)
-}
-subset.testing <- date.sub(2016,1,2)
-
-
-
-# READ ME
-# WORK IN PROGRESS
-# However this function does work. We can input any of 3 variables
-# These variables are date.sub.exper(year.test,month.test,day.test)
-# If we want to look at the month of march 2015, we use
-# date.sub.exper(2015, 3, day.test=FALSE)
-# Subsequently if we want all of 2015
-# date.sub.exper(2015, month.test=FALSE, day.test=FALSE)
-
-date.sub.exper <- function(year.test,month.test,day.test){
-  sub.year <- crime[crime$dispatch_year == year.test,]
-  if(month.test == FALSE){
-    subset.result <- sub.year
-  }
-  if(month.test == TRUE){
- sub.month <- sub.year[sub.year$dispatch_month == month.test,]
- if(day.test == FALSE){
-   subset.result <- sub.month
- }
- if(day.test == TRUE){
- sub.day <- sub.month[sub.month$dispatch_day == day.test,]
-subset.result <- sub.day   
- }
-  }
-  print(subset.result)
-}
-sub.testing.noday <- date.sub.exper(2015,3, day.test = FALSE)
-sub.test.nomonth <- date.sub.exper(2015, month.test = FALSE, day.test = FALSE)
-
-
-#
-#
-#
-#
-
-
-sub.year <- crime[crime$dispatch_year == "2015",]
-sub.year <- crime[crime$dispatch_year == "year.test"]
-print(sub.year)
-sub.month <- sub.year[sub.year$dispatch_month == "month.test"] 
-sub.day <- sub.month[sub.month$dispatch_day == "day.test"]
-#
-year.test <- 2014
-sub.year <- crime[crime$dispatch_year == year.test,]
