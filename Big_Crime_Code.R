@@ -109,19 +109,8 @@ crime.cleaned$crime_frequency <- rep(NA, length(crime.cleaned$unique.date))
 for(i in 1:length(crime.cleaned$crime_frequency))
    crime.cleaned$crime_frequency[i] <- crime.frequency(date.range[i])  
 
-plot(crime.cleaned$unique.date[150:300], crime.cleaned$crime_frequency[150:300])
-
-
-
-
-
-
-
-
-
-
-
-
+crime.cleaned$c.rep.NA..length.unique.crime.dispatch_date.... <- NULL
+head(crime.cleaned)
 
 
 
