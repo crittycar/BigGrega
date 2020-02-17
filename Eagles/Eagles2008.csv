@@ -1,23 +1,21 @@
 ﻿,,,,,,,,,,Score,,Offense,,,,,Defense,,,,,Expected Points,,
 Week,Day,Date,,,,OT,Rec,,Opp,Tm,Opp,1stD,TotYd,PassY,RushY,TO,1stD,TotYd,PassY,RushY,TO,Offense,Defense,Sp. Tms
-1,Sun,07-Sep,1:02PM ET,boxscore,W,,1-0,,St. Louis Rams,38,3,28,522,414,108,,8,166,130,36,,29.48,14.71,-5
-2,Mon,15-Sep,8:40PM ET,boxscore,L,,01-Jan,@,Dallas Cowboys,37,41,23,337,259,78,1,20,380,312,68,2,7.01,-9.61,0.03
-3,Sun,21-Sep,4:14PM ET,boxscore,W,,01-Feb,,Pittsburgh Steelers,15,6,16,260,195,65,3,14,181,147,34,3,-10.7,20.26,-0.64
-4,Sun,28-Sep,8:23PM ET,boxscore,L,,02-Feb,@,Chicago Bears,20,24,18,340,237,103,2,13,256,178,78,4,-8.6,19.47,-13.26
-5,Sun,05-Oct,1:04PM ET,boxscore,L,,03-Feb,,Washington Redskins,17,23,14,254,196,58,,22,388,185,203,,3.31,-12.02,3.59
-6,Sun,12-Oct,4:15PM ET,boxscore,W,,03-Mar,@,San Francisco 49ers,40,26,21,383,280,103,1,14,306,175,131,3,12.43,17.96,-14.05
-7,,,,,,,,,Bye Week,,,,,,,,,,,,,,,
-8,Sun,26-Oct,1:02PM ET,boxscore,W,,03-Apr,,Atlanta Falcons,27,14,24,432,240,192,1,19,335,258,77,3,9.63,2.28,1.15
-9,Sun,02-Nov,4:16PM ET,boxscore,W,,03-May,@,Seattle Seahawks,26,7,20,419,347,72,1,10,233,147,86,,6.87,9.83,0.76
-10,Sun,09-Nov,8:23PM ET,boxscore,L,,04-May,,New York Giants,31,36,17,300,194,106,2,26,401,182,219,2,5.58,-8.42,-5.21
-11,Sun,16-Nov,1:03PM ET,boxscore,T,OT,2005-04-01,@,Cincinnati Bengals,13,13,16,391,323,68,4,19,282,226,56,1,-22.92,20.77,4.35
-12,Sun,23-Nov,1:02PM ET,boxscore,L,,2005-05-01,@,Baltimore Ravens,7,36,13,206,120,86,5,14,248,138,110,,-44.24,8.48,8.25
-13,Thu,27-Nov,8:16PM ET,boxscore,W,,2006-05-01,,Arizona Cardinals,48,20,32,437,252,185,1,12,260,235,25,4,22.15,11.6,-6.29
-14,Sun,07-Dec,1:04PM ET,boxscore,W,,2007-05-01,@,New York Giants,20,14,24,331,191,140,,14,211,123,88,,13.14,5.3,-9.74
-15,Mon,15-Dec,8:40PM ET,boxscore,W,,2008-05-01,,Cleveland Browns,30,10,21,418,284,134,3,11,196,139,57,2,0.41,22.57,0.14
-16,Sun,21-Dec,4:16PM ET,boxscore,L,,2008-06-01,@,Washington Redskins,3,10,15,275,213,62,1,17,249,127,122,,-11.8,5.56,3.49
-17,Sun,28-Dec,4:15PM ET,boxscore,W,,2009-06-01,,Dallas Cowboys,44,6,16,303,166,137,1,15,298,211,87,5,7.09,31.76,-2.07
-,,Playoffs,,,,,,,,,,,,,,,,,,,,,,
-Wild Card,Sun,04-Jan,4:40PM ET,boxscore,W,,2010-06-01,@,Minnesota Vikings,26,14,15,350,283,67,2,16,301,153,148,2,-0.73,10.13,6.89
-Division,Sun,11-Jan,1:06PM ET,boxscore,W,,2011-06-01,@,New York Giants,23,11,20,276,217,59,2,16,307,169,138,3,-6.22,17.45,2.19
-Conf. Champ.,Sun,18-Jan,4:06PM ET,boxscore,L,,2011-07-01,@,Arizona Cardinals,25,32,22,454,357,97,3,21,369,267,102,1,13.1,-18.33,-2.55
+1,Sun,07-Sep-08,1:02PM ET,boxscore,W,,1-0,,St. Louis Rams,38,3,28,522,414,108,,8,166,130,36,,29.48,14.71,-5
+2,Mon,15-Sep-08,8:40PM ET,boxscore,L,,01-Jan,@,Dallas Cowboys,37,41,23,337,259,78,1,20,380,312,68,2,7.01,-9.61,0.03
+3,Sun,21-Sep-08,4:14PM ET,boxscore,W,,01-Feb,,Pittsburgh Steelers,15,6,16,260,195,65,3,14,181,147,34,3,-10.7,20.26,-0.64
+4,Sun,28-Sep-08,8:23PM ET,boxscore,L,,02-Feb,@,Chicago Bears,20,24,18,340,237,103,2,13,256,178,78,4,-8.6,19.47,-13.26
+5,Sun,05-Oct-08,1:04PM ET,boxscore,L,,03-Feb,,Washington Redskins,17,23,14,254,196,58,,22,388,185,203,,3.31,-12.02,3.59
+6,Sun,12-Oct-08,4:15PM ET,boxscore,W,,03-Mar,@,San Francisco 49ers,40,26,21,383,280,103,1,14,306,175,131,3,12.43,17.96,-14.05
+8,Sun,26-Oct-08,1:02PM ET,boxscore,W,,03-Apr,,Atlanta Falcons,27,14,24,432,240,192,1,19,335,258,77,3,9.63,2.28,1.15
+9,Sun,02-Nov-08,4:16PM ET,boxscore,W,,03-May,@,Seattle Seahawks,26,7,20,419,347,72,1,10,233,147,86,,6.87,9.83,0.76
+10,Sun,09-Nov-08,8:23PM ET,boxscore,L,,04-May,,New York Giants,31,36,17,300,194,106,2,26,401,182,219,2,5.58,-8.42,-5.21
+11,Sun,16-Nov-08,1:03PM ET,boxscore,T,OT,2005-04-01,@,Cincinnati Bengals,13,13,16,391,323,68,4,19,282,226,56,1,-22.92,20.77,4.35
+12,Sun,23-Nov-08,1:02PM ET,boxscore,L,,2005-05-01,@,Baltimore Ravens,7,36,13,206,120,86,5,14,248,138,110,,-44.24,8.48,8.25
+13,Thu,27-Nov-08,8:16PM ET,boxscore,W,,2006-05-01,,Arizona Cardinals,48,20,32,437,252,185,1,12,260,235,25,4,22.15,11.6,-6.29
+14,Sun,07-Dec-08,1:04PM ET,boxscore,W,,2007-05-01,@,New York Giants,20,14,24,331,191,140,,14,211,123,88,,13.14,5.3,-9.74
+15,Mon,15-Dec-08,8:40PM ET,boxscore,W,,2008-05-01,,Cleveland Browns,30,10,21,418,284,134,3,11,196,139,57,2,0.41,22.57,0.14
+16,Sun,21-Dec-08,4:16PM ET,boxscore,L,,2008-06-01,@,Washington Redskins,3,10,15,275,213,62,1,17,249,127,122,,-11.8,5.56,3.49
+17,Sun,28-Dec-08,4:15PM ET,boxscore,W,,2009-06-01,,Dallas Cowboys,44,6,16,303,166,137,1,15,298,211,87,5,7.09,31.76,-2.07
+Wild Card,Sun,04-Jan-09,4:40PM ET,boxscore,W,,2010-06-01,@,Minnesota Vikings,26,14,15,350,283,67,2,16,301,153,148,2,-0.73,10.13,6.89
+Division,Sun,11-Jan-09,1:06PM ET,boxscore,W,,2011-06-01,@,New York Giants,23,11,20,276,217,59,2,16,307,169,138,3,-6.22,17.45,2.19
+Conf. Champ.,Sun,18-Jan-09,4:06PM ET,boxscore,L,,2011-07-01,@,Arizona Cardinals,25,32,22,454,357,97,3,21,369,267,102,1,13.1,-18.33,-2.55
