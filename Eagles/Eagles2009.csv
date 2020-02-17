@@ -1,21 +1,19 @@
 ﻿,,,,,,,,,,Score,,Offense,,,,,Defense,,,,,Expected Points,,
 Week,Day,Date,,,,OT,Rec,,Opp,Tm,Opp,1stD,TotYd,PassY,RushY,TO,1stD,TotYd,PassY,RushY,TO,Offense,Defense,Sp. Tms
-1,Sun,13-Sep,1:04PM ET,boxscore,W,,1-0,@,Carolina Panthers,38,10,17,267,82,185,2,14,169,83,86,7,-7.39,37.25,-1.89
-2,Sun,20-Sep,1:04PM ET,boxscore,L,,01-Jan,,New Orleans Saints,22,48,23,463,384,79,4,23,421,288,133,1,-5.09,-17.18,-3.35
-3,Sun,27-Sep,1:02PM ET,boxscore,W,,01-Feb,,Kansas City Chiefs,34,14,21,420,327,93,1,11,196,97,99,1,12.49,12.3,-3.4
-4,,,,,,,,,Bye Week,,,,,,,,,,,,,,,
-5,Sun,11-Oct,1:02PM ET,boxscore,W,,01-Mar,,Tampa Bay Buccaneers,33,14,16,325,249,76,,22,303,218,85,3,11.71,6.86,0.81
-6,Sun,18-Oct,4:05PM ET,boxscore,L,,02-Mar,@,Oakland Raiders,9,13,14,283,216,67,,18,325,209,116,2,-13.66,9.52,-4.27
-7,Mon,26-Oct,8:41PM ET,boxscore,W,,02-Apr,@,Washington Redskins,27,17,11,262,140,122,,21,308,246,62,4,-6.82,9.78,6.32
-8,Sun,01-Nov,1:03PM ET,boxscore,W,,02-May,,New York Giants,40,17,17,391,211,180,2,21,356,215,141,3,16.25,6.25,2.03
-9,Sun,08-Nov,8:31PM ET,boxscore,L,,03-May,,Dallas Cowboys,16,20,17,297,208,89,2,18,358,282,76,1,-2.58,-3.88,4.91
-10,Sun,15-Nov,4:15PM ET,boxscore,L,,04-May,@,San Diego Chargers,23,31,26,462,433,29,1,22,331,212,119,,13.86,-17.51,-5.02
-11,Sun,22-Nov,8:30PM ET,boxscore,W,,04-Jun,@,Chicago Bears,24,20,18,377,220,157,3,14,284,158,126,1,0.11,7.93,-2.55
-12,Sun,29-Nov,1:03PM ET,boxscore,W,,04-Jul,,Washington Redskins,27,24,17,381,258,123,1,15,303,221,82,2,2.99,6.55,-4.23
-13,Sun,06-Dec,1:03PM ET,boxscore,W,,04-Aug,@,Atlanta Falcons,34,7,20,380,277,103,,22,295,234,61,3,15.54,12.94,-2.19
-14,Sun,13-Dec,8:30PM ET,boxscore,W,,04-Sep,@,New York Giants,45,38,20,374,297,77,1,27,512,379,133,4,15.04,-14.08,13.51
-15,Sun,20-Dec,4:16PM ET,boxscore,W,,04-Oct,,San Francisco 49ers,27,13,21,422,306,116,2,13,261,154,107,4,6.45,14.71,-9.29
-16,Sun,27-Dec,4:16PM ET,boxscore,W,,04-Nov,,Denver Broncos,30,27,22,394,289,105,3,13,241,171,70,1,6.91,5.81,-10.83
-17,Sun,03-Jan,4:15PM ET,boxscore,L,,05-Nov,@,Dallas Cowboys,0,24,10,228,191,37,1,21,474,295,179,1,-15.78,-11.35,5.14
-,,Playoffs,,,,,,,,,,,,,,,,,,,,,,
-Wild Card,Sat,09-Jan,8:05PM ET,boxscore,L,,06-Nov,@,Dallas Cowboys,14,34,17,340,284,56,4,27,426,228,198,1,-5.88,-19.19,7.07
+1,Sun,13-Sep-09,1:04PM ET,boxscore,W,,1-0,@,Carolina Panthers,38,10,17,267,82,185,2,14,169,83,86,7,-7.39,37.25,-1.89
+2,Sun,20-Sep-09,1:04PM ET,boxscore,L,,01-Jan,,New Orleans Saints,22,48,23,463,384,79,4,23,421,288,133,1,-5.09,-17.18,-3.35
+3,Sun,27-Sep-09,1:02PM ET,boxscore,W,,01-Feb,,Kansas City Chiefs,34,14,21,420,327,93,1,11,196,97,99,1,12.49,12.3,-3.4
+5,Sun,11-Oct-09,1:02PM ET,boxscore,W,,01-Mar,,Tampa Bay Buccaneers,33,14,16,325,249,76,,22,303,218,85,3,11.71,6.86,0.81
+6,Sun,18-Oct-09,4:05PM ET,boxscore,L,,02-Mar,@,Oakland Raiders,9,13,14,283,216,67,,18,325,209,116,2,-13.66,9.52,-4.27
+7,Mon,26-Oct-09,8:41PM ET,boxscore,W,,02-Apr,@,Washington Redskins,27,17,11,262,140,122,,21,308,246,62,4,-6.82,9.78,6.32
+8,Sun,01-Nov-09,1:03PM ET,boxscore,W,,02-May,,New York Giants,40,17,17,391,211,180,2,21,356,215,141,3,16.25,6.25,2.03
+9,Sun,08-Nov-09,8:31PM ET,boxscore,L,,03-May,,Dallas Cowboys,16,20,17,297,208,89,2,18,358,282,76,1,-2.58,-3.88,4.91
+10,Sun,15-Nov-09,4:15PM ET,boxscore,L,,04-May,@,San Diego Chargers,23,31,26,462,433,29,1,22,331,212,119,,13.86,-17.51,-5.02
+11,Sun,22-Nov-09,8:30PM ET,boxscore,W,,04-Jun,@,Chicago Bears,24,20,18,377,220,157,3,14,284,158,126,1,0.11,7.93,-2.55
+12,Sun,29-Nov-09,1:03PM ET,boxscore,W,,04-Jul,,Washington Redskins,27,24,17,381,258,123,1,15,303,221,82,2,2.99,6.55,-4.23
+13,Sun,06-Dec-09,1:03PM ET,boxscore,W,,04-Aug,@,Atlanta Falcons,34,7,20,380,277,103,,22,295,234,61,3,15.54,12.94,-2.19
+14,Sun,13-Dec-09,8:30PM ET,boxscore,W,,04-Sep,@,New York Giants,45,38,20,374,297,77,1,27,512,379,133,4,15.04,-14.08,13.51
+15,Sun,20-Dec-09,4:16PM ET,boxscore,W,,04-Oct,,San Francisco 49ers,27,13,21,422,306,116,2,13,261,154,107,4,6.45,14.71,-9.29
+16,Sun,27-Dec-09,4:16PM ET,boxscore,W,,04-Nov,,Denver Broncos,30,27,22,394,289,105,3,13,241,171,70,1,6.91,5.81,-10.83
+17,Sun,03-Jan-10,4:15PM ET,boxscore,L,,05-Nov,@,Dallas Cowboys,0,24,10,228,191,37,1,21,474,295,179,1,-15.78,-11.35,5.14
+Wild Card,Sat,09-Jan-09,8:05PM ET,boxscore,L,,06-Nov,@,Dallas Cowboys,14,34,17,340,284,56,4,27,426,228,198,1,-5.88,-19.19,7.07
