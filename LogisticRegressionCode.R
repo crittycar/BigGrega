@@ -27,3 +27,11 @@ library(MASS)
 confint(z, level = 0.95) # approximate 95% confidence intervals
 
 anova(z, test = "Chisq")
+
+
+#modeling with glms
+
+m1 <- glm(y ~  x, data = DATAFRAME, family = binomial)
+
+#We can account fixed effects by subsetting them and then adding +'s to the x variable. ex:
+m1 <- glm(y ~ x + YEAR-YEARVARIATION + PLAYOFFGAMES + SUPERBOWLGAMES, data = DATAFRAME, family = binomial)
