@@ -24,7 +24,7 @@ cleaned.dates <- as.Date(cleaned.eagles$X.2, format = "%d-%b-%y")
 date <- cleaned.dates
 # Creating a column of 1s
 binary <- c(rep(1,length(cleaned.dates)))
-# Creating a dataframe with a column of dates and 1s
+# Creating a dataframe with a column of dates and 1s 
 completed.eagles <- data.frame(date,binary)
 
 
