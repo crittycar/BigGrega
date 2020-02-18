@@ -8,6 +8,7 @@
 #--------------any libraries needed are loaded and displayed below--------------
 #
 library(dplyr)
+
 #
 #--------------make project folders and folder paths----------------------------
 #
@@ -38,7 +39,7 @@ data.path <- paste(wd, "/", folders[3], sep = "")
 crime <- read.csv(paste(data.path, "/", "Philly_Raw_Crime_Data.csv", sep = ""),
                   stringsAsFactors = FALSE)
 
-
+crime <- read.csv("C:/Users/user/OneDrive - Quest University Canada/Desktop/Quest 2019-2020/Data Analysis in R/Git/BigGrega/Data/Philly_Raw_Crime_Data.csv.csv")
 
 #
 #
@@ -53,6 +54,7 @@ remove.columns <- c("dispatch_date_time", "dispatch_time", "lat",
 for(i in remove.columns){
 crime <- crime[, !(colnames(crime) %in% i)]
 }
+
 # we can confirm that we still have the columns we want below
 head(crime)
 
