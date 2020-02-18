@@ -187,6 +187,7 @@ x2019= Season2019$crime_frequency[Season2019$binary == 0]
 
 p19 <- t.test(x2019,y2019)
 
+#compile all results
 
 T.test.results <- capture.output(p06,p07,p08,p09,p10,p11,p12,p13,p14,p15,p16,p17,p18,p19, file = "Results.csv")
 
