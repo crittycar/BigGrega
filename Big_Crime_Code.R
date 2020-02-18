@@ -8,26 +8,31 @@
 #--------------any libraries needed are loaded and displayed below--------------
 #
 library(dplyr)
+library("zoo")
 #
 #--------------make project folders and folder paths----------------------------
-#
+
+
 wd <- getwd()  # working directory
-#
-#
-folders <- c("Data Output", "Figures", "Data")
+
+folders <- c("Data Output", "Figures")
 # function to create folders below
 for(i in 1:length(folders)){
   if(file.exists(folders[i]) == FALSE)
     dir.create(folders[i])
 }
-#
-# we also need to store the paths to all of these folders
+
+
+# we also need to store the paths to these new folders
 data.output.path <- paste(wd, "/", folders[1], sep = "")
 figures.path <- paste(wd, "/", folders[2], sep = "")
-data.path <- paste(wd, "/", folders[3], sep = "")
-#
-#
-# now we can save stuff to these folders!
+
+# our raw data is stored in different folders, lets make the paths
+philly.crime.path <- paste(wd, "/", "Philly Raw Crime Data", sep = "")
+eagles.seasons.path <- paste(wd, "/", "Eagles Raw Season Data", sep = "")
+
+
+# now we can access and save stuff to these folders!
 
 
 
@@ -35,13 +40,11 @@ data.path <- paste(wd, "/", folders[3], sep = "")
 
 
 # time to upload the datas
-crime <- read.csv(paste(data.path, "/", "Philly_Raw_Crime_Data.csv", sep = ""),
-                  stringsAsFactors = FALSE)
+crime <- read.csv(paste(philly.crime.path, "/", "Philly_Raw_Crime_Data.csv",
+                        sep = ""), stringsAsFactors = FALSE)
 
 
 
-#
-#
 # we now need to simplify our data, there are a lot of columns we do not need
 # we can make a vector below of all the columns we wish to remove
 
@@ -53,46 +56,48 @@ remove.columns <- c("dispatch_date_time", "dispatch_time", "lat",
 for(i in remove.columns){
 crime <- crime[, !(colnames(crime) %in% i)]
 }
+
 # we can confirm that we still have the columns we want below
 head(crime)
 
 
-# we also want to put the dates into date format, this will make them easier to 
-# work with later
+# we also want to put the dates into date format 
+#this will make them easier to work with later
 crime$dispatch_date <- as.Date(crime$dispatch_date)  
 
 
 # our data is now much simpler. We still need to clean some more
 # every single occurence of a crime represents a single observation in our
-# initial data. This is why there are almost three million data point
+# initial data. This is why there are almost three million data points
 
-# we are really interested in the total frequency of crimes on a given day
+# we are interested in the total frequency of crimes on a given day
 # so we want to make a new data frame that has unique dates and the
 # number of crimes that occured on each unique date
-# below we will make a function to help us create the new data frame
 
+# we construct this new data frame below
 
-# function takes any date in the format YYYY-MM-DD
-# returns a list of the crime$text_general_code AKA frequency of different crimes
+# this is a helper function that takes any date in the format YYYY-MM-DD
+# returns the frequency of crimes on the input day
 crime.frequency <- function(n){
   freq <- crime$text_general_code[crime$dispatch_date == n]
   length(freq)
 }
 
-# we can use this function to create the frequency column in our cleaned data frame
-
+# we will use this function to create the frequency column in our cleaned data frame
 
 # below we create a new data.frame 
-# we first have to create an empty one that we can then fill with values
+# we first have to create an empty one that we can fill with values
 crime.cleaned <- data.frame(c(rep(NA, length(unique(crime$dispatch_date)))))
+
+# here we can input the unique dates into their own column
 crime.cleaned$unique.date <- sort(unique(crime$dispatch_date))
 
 
-# we want to make a new column in the cleaned data frame
-# we want for this column to contain the frequency of crime for every date
+# now we want to add a column that contains the daily crime frequency
 
-# this vector just contains numbers to help us index
+# the vector below contains numbers to help us index
 row.num <- c(1:length(crime.cleaned$unique.date))  
+
 
 # this vector contains the sorted unique dates
 date.range <- c(crime.cleaned$unique.date[row.num])
@@ -100,9 +105,12 @@ date.range <- c(crime.cleaned$unique.date[row.num])
 # this is the empty column that we will fill with daily crime frequencies
 crime.cleaned$crime_frequency <- rep(NA, length(crime.cleaned$unique.date))
 
-# this loop fills up the above empty vector with daily crime frequencies
-for(i in 1:length(crime.cleaned$crime_frequency))
+
+# this loop fills up the above empty column with daily crime frequencies
+for(i in 1:length(crime.cleaned$crime_frequency)){
    crime.cleaned$crime_frequency[i] <- crime.frequency(date.range[i])  
+}
+
 
 # we remove the NA column that was place-holding
 crime.cleaned$c.rep.NA..length.unique.crime.dispatch_date.... <- NULL
@@ -111,15 +119,6 @@ crime.cleaned$c.rep.NA..length.unique.crime.dispatch_date.... <- NULL
 head(crime.cleaned)
 
 
-
-# for analysis, we may want to sort the data by year, or by year and month
-# so we will create three separate columns that contain year, month, day
-crime.cleaned$year <- as.numeric(format(crime.cleaned$unique.date, format = "%Y"))
-crime.cleaned$month <- as.numeric(format(crime.cleaned$unique.date, format = "%m"))
-crime.cleaned$day <- as.numeric(format(crime.cleaned$unique.date, format = "%d"))
-
-# we can look at the data to see that we accomplished what we wanted
-head(crime.cleaned)
 
 
 
@@ -130,35 +129,48 @@ head(crime.cleaned)
 
 # We load in Eagles Football Club data from the timeframe we are examining
 
-# set the working directory to the file containing the Eagles data
-# which is located in our primary R file
-setwd("Eagles")
+# recall that our eagles data can be accessed with the path eagles.seasons.path
+
 
 # The list.files function identifies all .csv files in the Eagles folder
-eagle.data <- list.files(pattern="*.csv")
-for (i in 1:length(eagle.data)) 
-  assign(eagle.data[i], read.csv(eagle.data[i]))
+# then stores the names of the files as strings in a vector
+# we will use these as the names of our individual season objects
+eagle.data <- list.files(path = eagles.seasons.path ,pattern="*.csv")
+
+# this loop names each data frame and imports it into our environment  
+for (i in 1:length(eagle.data)){ 
+  assign(eagle.data[i], read.csv(paste(eagles.seasons.path, "/", eagle.data[i], sep = ""),
+                                 stringsAsFactors = FALSE))
+}
 
 
-# Binding all dataframes into one
+# Below we bind all dataframes into one
 binded.data <- mget(eagle.data)  # mget gets multiple variables 
-all.eagles <- bind_rows(binded.data)  # dpylr allows us to bind data from a list of data frames
+
+# bind_rows from the dpylr library allows us to bind data from a list of data frames
+# the object all.eagles contains the dates of all the seasons
+all.eagles <- bind_rows(binded.data)  
 
 
 # Cleaning functions - removing header rows and changing date format.
-cleaned.eagles <- all.eagles[!(all.eagles$X.1=="Day"),]
-cleaned.dates <- as.Date(cleaned.eagles$X.2, format = "%d-%b-%y")
+cleaned.eagles <- all.eagles[!(all.eagles[,2]=="Day"),]
+cleaned.dates <- as.Date(cleaned.eagles[,3], format = "%d-%b-%y")
 
-# Renaming our subset
+
+# We renaming our subset
 unique.date <- cleaned.dates
-# Creating a column of 1s
+
+# Creating a column of 1s. A 1 indicates the presence of a game day
+# we call this column binary
 binary <- c(rep(1,length(cleaned.dates)))
+
 # Creating a dataframe with a column of dates and 1s
 completed.eagles <- data.frame(unique.date,binary)
 
 
-first(completed.eagles$unique.date)
-last(completed.eagles$unique.date)
+# now we can look at the cleaned data to see it
+head(completed.eagles)
+
 
 #------------------------combining our two datasets-----------------------------
 
@@ -175,71 +187,57 @@ combined.data <- merge(crime.cleaned, completed.eagles, all.x = TRUE)
 # we can use the function below to change all the NA's to 0
 combined.data[is.na(combined.data)] <- 0
 
-write.csv(combined.data, file = "combined.data.csv")
+# we can write this clean data into a csv file for use
+# we store it into our data output folder
+write.csv(combined.data, paste(data.output.path, "/", "Final_Clean_Data.csv", sep = ""))
 
 
 
-#------------------------subset data by season----------------------------------
+#----------------find and store start and end dates of every season-------------
+
 # the function below outputs two vectors
 # year.start is a vector that contains the starting date of the given season
 # year.end is a vector that contains the ending date of the given season
-season.range <- function(f){
+season.range.start <- function(f){
   testing <- as.Date(f[,3], "%d-%b-%y")
   start <- min(testing, na.rm=T)
-  end <- max(testing, na.rm=T)
-  print(start)
-  print(end)
-  season.start <<- start
-  season.end <<- end
+  return(start)
 }
 
 
-# we want to iterate this vector over all of the seasons that we have
-# so that we can get the start and end dates for every season
-# since our function above takes an object rather than a string,
-# iteration has proven to be nearly impossible, at least for us
+season.range.end <- function(f){
+  testing <- as.Date(f[,3], "%d-%b-%y")
+  end <- max(testing, na.rm=T)
+  return(end)
+}
 
-# ideally, we would make a for loop that would take a list of the names of the 
-# eagles data (Eagles2006.csv, Eagles2007.csv, etc.)
-# since our function does not take strings, however, this does not work
+# empty vectors to fill up
+season.start <- rep(NA, length(eagle.data))
+season.end <- rep(NA, length(eagle.data))
 
-# we are going to use the function to do these by hand and
-# store them into two vectors
-season.start <- c("2006-09-10", "2007-09-09", "2008-09-07", "2009-09-13", "2010-09-12",
-                  "2011-09-11", "2012-09-09", "2013-09-09", "2014-09-07", "2015-09-14",
-                  "2016-09-11", "2017-09-10", "2018-09-06", "2019-09-08")
+# fill up season.start vector with start dates. note that they come out
+# in numeric format, we will convert them back after
+for (i in 1:length(eagle.data)){ 
+ season.start[i] <- season.range.start(
+    read.csv(paste(eagles.seasons.path, "/", eagle.data[i], sep = ""),
+                                 stringsAsFactors = FALSE))
+}
 
-season.end <- c("2007-01-13", "2007-12-30", "2009-01-18", "2010-01-09", "2011-01-09",
-                "2012-01-01", "2012-12-30", "2014-01-04", "2014-12-28", "2016-01-03",
-                "2017-01-01", "2018-02-04", "2019-01-13", "2020-01-05")
 
-season.range(Eagles2006.csv)
-season.range(Eagles2007.csv)
-season.range(Eagles2008.csv)
-season.range(Eagles2009.csv)
-season.range(Eagles2010.csv)
-season.range(Eagles2011.csv)
-season.range(Eagles2012.csv)
-season.range(Eagles2013.csv)
-season.range(Eagles2014.csv)
-season.range(Eagles2015.csv)
-season.range(Eagles2016.csv)
-season.range(Eagles2017.csv)
-season.range(Eagles2018.csv)
-season.range(Eagles2019.csv)
+for (i in 1:length(eagle.data)){ 
+  season.end[i] <- season.range.end(
+    read.csv(paste(eagles.seasons.path, "/", eagle.data[i], sep = ""),
+             stringsAsFactors = FALSE))
+}
 
-# unfortunately, doing this by hand is absolutely appalling
-# the reason we were unable to iterate this is that we could not find a way 
-# to store the objects in a vector. We tried A LOT of ways to get around this
-# the difficulty is that the function season.range takes a data frame not a string
-# If we had figured this out, it would be very simple for us to automate the above
-# we would just make the start and end vectors full of NA's and fill them up with dates
+# our for loop spits out dates as.numeric so we need to convert back to date form
+# the zoo library we imported at the beginning allows us to do this using
+# the function as.Date
+season.start <- as.Date(season.start)
+season.end <- as.Date(season.end)
 
-# we will write a for loop that takes every value in eagle.data
-# and runs it through the function season.range
-# this will output two vectors. 
-# season.start will contain the start dates of every season in our dataset
-# season.end will contain the end dates of every season in our dataset
+
+
 
 
 
@@ -255,34 +253,26 @@ subset.season <- function(s, e){
 }
 
 
-# now we can use this function to make new data frames that are divided by season
-# we will make a vector of what we want these to be named below
-seasons.names <- rep(NA, length(2006:2019))
-years <- c(2006:2019)
-
-# fills the vector seasons.names with the names of the seasons
-for(i in 1:length(2006:2019))
-  seasons.names[i] <- c(paste("season", ".", years[i], sep = ""))
-
-
-# creates subset data frames of all of the data by season!!!!!!
-for(i in 1:length(season.start))
-  assign(seasons.names[i], subset.season(season.start[i], season.end[i]))
 
 
 
 #----------------------automated t-test for every season------------------------
 
+# We need to ensure that the dates in our combined.data are in a good format
+as.Date(combined.data$unique.date)
+
 # try to make the subsetting and t-test fully general and done on a loop
+
 
 # so that we can store the outputs of our t-test, each with a name
 # we create an empty vector then use a loop to fill it with names
 t.test.names <- rep(NA, length(2006:2019))
+years <- c(2006:2019)
 
 # loop to make names
-for(i in 1:length(2006:2019))
+for(i in 1:length(2006:2019)){
   t.test.names[i] <- c(paste("t.test", ".", years[i], sep = ""))
-
+}
 
 
 # function subsets the crime_frequency of the dataframe df by the binary value n
@@ -293,38 +283,44 @@ binary.subset <- function(df, n){
 
 # this loop stores the t.test values for every season into an object 
 # whose name is drawn in order from the vector t.test.names
-for(i in 1:length(2006:2019))
-assign(t.test.names[i], t.test(binary.subset(subset.season(season.start[i], season.end[i]), 0),
+for(i in 1:length(2006:2019)){
+  assign(t.test.names[i], t.test(binary.subset(subset.season(season.start[i], season.end[i]), 0),
        binary.subset(subset.season(season.start[i], season.end[i]), 1)))
+}
 
 
-# we can put these into 
+
+# We can capture all of these results from the above loop into a .csv file 
+# and store them in the data.output.path folder
 T.test.results <- capture.output(t.test.2006, t.test.2007, t.test.2008, t.test.2009,
                                  t.test.2010, t.test.2011, t.test.2012, t.test.2013,
                                  t.test.2014, t.test.2015, t.test.2016, t.test.2017,
-                                 t.test.2018, t.test.2019, file = "Seasonal_T_Test.Results.csv")
+                                 t.test.2018, t.test.2019, 
+                                 file = paste(data.output.path, "/", 
+                                              "Seasonal_T_Test.Results.csv", sep = ""))
 
 
-# this function can create a boxplot for any of our data frames
-box.plot <- function(df){
-  boxplot(df$crime_frequency ~ df$binary, xlab = "Game Day Presence or Absence",
-          ylab = "Frequency of Crimes")
-}
 
-# subset.season makes the data subsets. Takes a start date and end date as arguments
-# we need to use this inside of boxplot in order to be able to iterate the 
-# creation of boxplots
+# we also want to make figures to visualize the crime rates every season
+# recall that a 0 indicates no game and a 1 indicates the presence of a game
 
+
+# similarly to the t-test, we need to use subset.season function inside
+# of boxplot in order to iterate the creation of boxplots over multiple seasons
+
+# we make the names of the boxplots below
 box.plot.names <- rep(NA, length(2006:2019))
 
 # loop to make names
-for(i in 1:length(2006:2019))
-  box.plot.names[i] <- c(paste("box.plot", ".", years[i], sep = ""))
-
-
-# loop that assigns the plots to names and stores them in the working directory
 for(i in 1:length(2006:2019)){
-  png(filename = paste("boxplot.", seasons.names[i], ".png", sep = "" ))
+  box.plot.names[i] <- c(paste("box.plot", ".", years[i], sep = ""))
+}
+
+
+
+# loop that assigns the plots to names and stores them in the figures folder
+for(i in 1:length(2006:2019)){
+  png(filename = paste(figures.path, "/", box.plot.names[i], ".png", sep = ""))
   boxplot((subset.season(season.start[i], season.end[i]))$crime_frequency ~
             ((subset.season(season.start[i], season.end[i]))$binary),
           xlab = "Game Day Presence or Absence", ylab = "Frequency of Crimes")
@@ -332,7 +328,26 @@ for(i in 1:length(2006:2019)){
 }
 
 
+#-------------------t-test and boxplot for all seasons compiled-----------------
 
+
+# we can use the subset.seasons to subset combined.data by season
+# then we will bind all of these dataframes together
+# the resulting dataframe will contain the crime frequencies for 
+# all the seasons we have
+
+
+# we will make a vector of what we want these to be named below
+#seasons.names <- rep(NA, length(2006:2019))
+
+# fills the vector seasons.names with the names of the seasons
+#for(i in 1:length(2006:2019))
+# seasons.names[i] <- c(paste("season", ".", years[i], sep = ""))
+
+
+# creates subset data frames of all of the data by season!!!!!!
+#for(i in 1:length(season.start))
+#  assign(seasons.names[i], subset.season(season.start[i], season.end[i]))
 
 
 
