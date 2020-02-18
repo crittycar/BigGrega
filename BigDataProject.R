@@ -37,7 +37,14 @@ Eagles_Playoffs <- read.csv(paste(Eagles,
 
 
 
+#We assign the values in unique.date as actual dates
+dateframe <- as.Date(combined.data$unique.date)
 
+#We create a new dataframe with the actual dates as a new column
+googy <- cbind(combined.data, dateframe )
+
+#This is the line to create a subset of the dates entered
+googy[googy$dateframe >= "2006-01-01" & googy$dateframe <= "2006-02-02",]
 
 
 
