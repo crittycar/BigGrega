@@ -3,13 +3,13 @@
 #Title: Big Data Project
 #
 #Description: We look at the crimes committed in Philadelphia between 2006 and 
-#2020 and compare crime rates between times when the Philadelphia Eagles entered
-#the Superbowl Playoffs and times where they did not enter the playoffs.
+#2020 and compare crime rates between times when the Philadelphia Eagles played 
+#games and times when they did not.
 #
 #Index: 
 # 1. Installation
 # 2. Subsets
-# 3. Functions
+# 3. Functions and Tests
 
 #--------------------------------- 1. Installation -----------------------------
 
@@ -35,7 +35,7 @@ Eagles_Playoffs <- read.csv(paste(Eagles,
 
 
 
-
+#--------------------------------- 2. Subsets ----------------------------------
 
 #We assign the values in unique.date as actual dates
 dateframe <- as.Date(combined.data$unique.date)
@@ -46,6 +46,9 @@ googy <- cbind(combined.data, dateframe )
 #This is the line to create a subset of the dates entered
 googy[googy$dateframe >= "2006-01-01" & googy$dateframe <= "2006-02-02",]
 
+
+
+#--------------------------------- 3. Functions and Tests ----------------------
 
 ###2006 Season
 Season2006<- googy[googy$dateframe >= "2006-09-10" & googy$dateframe <= "2007-01-07",]
@@ -190,6 +193,3 @@ p19 <- t.test(x2019,y2019)
 #compile all results
 
 T.test.results <- capture.output(p06,p07,p08,p09,p10,p11,p12,p13,p14,p15,p16,p17,p18,p19, file = "Results.csv")
-
-
-
