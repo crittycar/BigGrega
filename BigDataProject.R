@@ -25,7 +25,7 @@ Analysis <- paste(getwd(),"/","Analysis","/",sep ="")
 
 #This reads the philly crime rates csv file
 phillycrime <- read.csv(paste(PhillyCrimeRates, 
-                              "Philly Crime Rates.csv", 
+                              "incidents_part1_part2", 
                               sep = ""))
 
 #This reads the eagles playoff games csv file
